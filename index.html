@@ -1,18 +1,58 @@
 <!DOCTYPE html>
-<html lang="en" class="hide-scrollbar">
+<html class="hide-scrollbar" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link href="css/styles.css" rel="stylesheet">
+    <!--<script src="a.out.js"></script>-->
 </head>
 <body>
 <div class="app">
     <div class="head">
-        <video src="media/videoplayback.mp4" autoplay loop></video>
+        <!--<video autoplay loop src="media/videoplayback.mp4"></video>-->
+        <img src="https://www.exclusive-networks.com/de/wp-content/uploads/sites/10/2019/06/test-image.jpg">
+        <canvas id="interactive-header"></canvas>
     </div>
     <div class="content">
-
+        <div></div>
     </div>
 </div>
+<script>
+
+    document.body.addEventListener("wheel", () => {return false});
+
+    let buildUrl = "webassembly/interactive_header";
+    let loaderUrl = buildUrl + "/Andromeda.loader.js";
+    let config = {
+        dataUrl: buildUrl + "/Andromeda.data",
+        frameworkUrl: buildUrl + "/Andromeda.framework.js",
+        codeUrl: buildUrl + "/Andromeda.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "Andromeda",
+        productVersion: "0.1",
+    };
+
+    let canvas = document.querySelector("#interactive-header");
+
+    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent))
+        config.devicePixelRatio = 1;
+
+    let script = document.createElement("script");
+    script.src = loaderUrl;
+    script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+        }).then((unityInstance) => {
+            document.getElementsByClassName("head")[0].getElementsByTagName("img")[0].style.display = "none";
+            document.getElementById("interactive-header").addEventListener("wheel", (e) => {
+                if (e.deltaY < 0) return; // scrolling up
+                window.scrollBy({behavior: "smooth", top: document.getElementById("header-container").getBoundingClientRect().height, left: 0});
+            });
+        }).catch((message) => {
+            alert(message);
+        });
+    };
+    document.body.appendChild(script);
+</script>
 </body>
 </html>
