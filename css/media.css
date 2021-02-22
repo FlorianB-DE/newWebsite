@@ -1,0 +1,11 @@
+@media (orientation: landscape) {
+    .head {
+        height: var(--header-height);
+    }
+}
+
+@media (orientation: portrait) {
+    .head {
+        height: min(calc(100% - var(--header-height)), 40%);
+    }
+}
