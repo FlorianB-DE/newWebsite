@@ -1,5 +1,5 @@
 $header_padding: 8px;
-$header-height: 60vh;
+$header-height: 50vh;
 
 .head {
   width: calc(100% + #{$header_padding * 2});
@@ -14,9 +14,9 @@ $header-height: 60vh;
 
   video, canvas, img {
     z-index: 0;
-    width: calc(100% - calc(var(--header-padding) * 2));
-    margin-left: var(--header-padding);
-    height: calc(100% - var(--header-padding));
+    width: calc(100% - calc(#{$header_padding} * 2));
+    margin-left: $header_padding;
+    height: calc(100% - #{$header_padding});
     border-bottom-left-radius: 50%;
     border-bottom-right-radius: 50%;
     object-fit: fill;

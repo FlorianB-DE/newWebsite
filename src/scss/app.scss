@@ -1,5 +1,5 @@
-@import "content";
 @import "header";
+@import "content";
 @import "utility-classes";
 
 $main-color: white;
@@ -16,11 +16,10 @@ html, body {
 }
 
 body {
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .app {
-  top: 0;
   padding: 0;
-  background: $main-color;
+  width: 100%;
 }

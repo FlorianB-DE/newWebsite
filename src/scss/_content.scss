@@ -1,8 +1,68 @@
+@import "shadows";
+
+@function get_text_size($orientation) {
+  @if($orientation == "landscape") {
+    @return unquote("min(6.5vw, 35vh)");
+  }
+  @return unquote("min(6.5vh, 90vw)");
+}
+
 .content {
-  height: 4000px;
-  padding: 30px;
-  .title {
-    font-size: 8rem;
-    line-height: 6rem;
+  height: 100vh - $header-height;
+  width: 100%;
+  padding: 20px;
+  display: inline-block;
+
+  .background {
+    position: absolute;
+    z-index: -1;
+    background-image: url("../media/landscape_full.jpg");
+    background-repeat: repeat-x;
+    background-size: cover;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    max-height: 1200px;
+    width: 100vw;
+  }
+
+  .container {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 8px 50px 50px 8px;
+    max-width: 80vw;
+    display: inline-flex;
+
+    @media (orientation: landscape) {
+      .title {
+        font-size: get_text_size("landscape");
+        line-height: calc(#{get_text_size("landscape")} - 0.7vw);
+        user-select: none;
+
+        .title__text {
+          display: inline-block;
+          text-shadow: calc(#{get_text_size("landscape")} / 30) calc(#{get_text_size("landscape")} / 20) rgba(0, 0, 0, 0.8);
+          padding: 5px calc(#{get_text_size("landscape") / 2} - 0.7vw) 0;
+          @include box-shadow(20px);
+          border-radius: 10px !important;
+          &--main {
+            text-shadow: calc(#{get_text_size("landscape")} / #{(30 * 0.75)}) calc(#{get_text_size("landscape")} / #{(20 * 1.25)}) rgba(0, 0, 0, 0.75);
+          }
+        }
+      }
+    }
+    @media (orientation: portrait) {
+      .title {
+        font-size: get_text_size("portrait");
+        line-height: calc(#{get_text_size("portrait")} - 0.7vh);
+
+        .title__text {
+          text-shadow: calc(#{get_text_size("portrait")} / 30) calc(#{get_text_size("portrait")} / 20) rgba(0, 0, 0, 0.8);
+          &--main {
+            text-shadow: calc(#{get_text_size("portrait")} / #{(30 * 0.75)}) calc(#{get_text_size("portrait")} / #{(20 * 1.25)}) rgba(0, 0, 0, 0.75);
+          }
+        }
+      }
+    }
   }
 }

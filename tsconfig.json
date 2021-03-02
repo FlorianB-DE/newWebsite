@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "module": "system",
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "target": "es5",
+    "sourceMap": false,
+    "outDir": "js",
+    "outFile": "js/app.js",
+    "rootDir": "src/script"
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "src/script/**/*"
+  ]
+}

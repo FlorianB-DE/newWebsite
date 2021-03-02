@@ -1,0 +1,4 @@
+@mixin box-shadow ($pixels) {
+  border-radius: 2px;
+  box-shadow: 0 $pixels $pixels * 3 rgba(0,0,0,0.12), 0 $pixels $pixels rgba(0,0,0,0.24);
+}
