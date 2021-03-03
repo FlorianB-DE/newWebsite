@@ -9,15 +9,8 @@ window.onload = function () {
     Array.prototype.forEach.call(document.getElementsByClassName("randomly-colored"), function (element) {
         ColorFunctions.randomColors(element);
     });
+    Unity.init();
 };
-var Functions;
-(function (Functions) {
-    function scrollTop() {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-    }
-    Functions.scrollTop = scrollTop;
-})(Functions || (Functions = {}));
 var ColorFunctions;
 (function (ColorFunctions) {
     var MIN_COLOR_DIFFERENCE = 400;
@@ -32,7 +25,8 @@ var ColorFunctions;
             if (index == 1 && element.classList.contains(CLASS + "__background")) {
                 var alpha = element.hasAttribute("data-alpha") ? parseFloat(element.getAttribute("data-alpha")) : 0;
                 var color = (element.hasAttribute("data-reference")) ? (element.getAttribute("data-reference") == "lightest") ? colors[colors.length - 1] : colors[0] : colors[0];
-                element.style.background = "rgba(" + invertRGB(hexToRGB(color)).join(",") + ", " + alpha + ")";
+                var targetElement = (element.hasAttribute("data-query-selector") ? document.querySelector(element.getAttribute("data-query-selector")) : element);
+                targetElement.style.background = "rgba(" + invertRGB(hexToRGB(color)).join(",") + ", " + alpha + ")";
             }
             return a + ("<span style=\"color:" + colors[index - 1] + "\">" + ch + "</span>");
         });
@@ -105,6 +99,14 @@ var ColorFunctions;
         }).join("");
     }
 })(ColorFunctions || (ColorFunctions = {}));
+var Functions;
+(function (Functions) {
+    function scrollTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    Functions.scrollTop = scrollTop;
+})(Functions || (Functions = {}));
 var Unity;
 (function (Unity) {
     var scrollTop = Functions.scrollTop;

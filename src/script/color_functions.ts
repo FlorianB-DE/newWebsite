@@ -13,7 +13,8 @@ module ColorFunctions {
             if (index == 1 && element.classList.contains(CLASS + "__background")) {
                 const alpha: number = element.hasAttribute("data-alpha") ? parseFloat(element.getAttribute("data-alpha")) : 0;
                 const color: string = (element.hasAttribute("data-reference")) ? (element.getAttribute("data-reference") == "lightest") ? colors[colors.length - 1] : colors[0] : colors[0];
-                element.style.background = "rgba(" + invertRGB(hexToRGB(color)).join(",") + ", " + alpha + ")";
+                const targetElement : HTMLElement = (element.hasAttribute("data-query-selector") ? document.querySelector(element.getAttribute("data-query-selector")) : element);
+                targetElement.style.background = "rgba(" + invertRGB(hexToRGB(color)).join(",") + ", " + alpha + ")";
             }
             return a + `<span style="color:${colors[index - 1]}">${ch}</span>`;
         });

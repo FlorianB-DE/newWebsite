@@ -53,28 +53,26 @@
           display: inline-block;
           text-shadow: calc(min(6.5vw, 35vh) / 30) calc(min(6.5vw, 35vh) / 20) rgba(0, 0, 0, 0.8);
           padding: 5px calc(min(6.5vw, 35vh)/2 - 0.7vw) 0;
-          border-radius: 2px;
-          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12), 0 20px 20px rgba(0, 0, 0, 0.24);
           border-radius: 10px !important; }
           .content .container .title .title__text--main {
             text-shadow: calc(min(6.5vw, 35vh) / 22.5) calc(min(6.5vw, 35vh) / 25) rgba(0, 0, 0, 0.75); } }
     @media (orientation: portrait) {
       .content .container .title {
         font-size: min(6.5vh, 90vw);
-        line-height: calc(min(6.5vh, 90vw) - 0.7vh); }
+        line-height: calc(min(6.5vh, 90vw) - 0.7vh);
+        user-select: none; }
         .content .container .title .title__text {
           text-shadow: calc(min(6.5vh, 90vw) / 30) calc(min(6.5vh, 90vw) / 20) rgba(0, 0, 0, 0.8); }
           .content .container .title .title__text--main {
             text-shadow: calc(min(6.5vh, 90vw) / 22.5) calc(min(6.5vh, 90vw) / 25) rgba(0, 0, 0, 0.75); } }
 
-.hide-scrollbar {
-  -ms-overflow-style: none;
-  /* IE and Edge */
-  scrollbar-width: none;
-  /* Firefox */ }
-
-.hide-scrollbar::-webkit-scrollbar {
-  display: none; }
+.socials {
+  position: fixed;
+  right: 0;
+  top: calc(100vh - 160px);
+  width: 80px;
+  height: 80px;
+  background: yellow; }
 
 * {
   padding: 0;

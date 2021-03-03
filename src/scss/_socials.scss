@@ -1,0 +1,10 @@
+$size: 80px;
+
+.socials {
+  position: fixed;
+  right: 0;
+  top: calc(100vh - #{$size * 2});
+  width: $size;
+  height: $size;
+  background: yellow;
+}
