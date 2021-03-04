@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Righteous");
 .head {
   width: calc(100% + 16px);
   height: 50vh;
@@ -73,12 +74,50 @@
   top: calc(100vh - 160px);
   width: 80px;
   height: 80px;
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.5);
   border-bottom-left-radius: 20px;
   border-top-left-radius: 20px; }
-  .socials span {
+  .socials .button {
+    cursor: pointer;
+    color: #f30;
+    display: block;
+    align-items: flex-start;
+    text-transform: uppercase;
     position: relative;
-    z-index: 1; }
+    transition: transform 0.3s;
+    height: 55%;
+    margin-top: calc(45% - 10px); }
+    .socials .button span {
+      display: block;
+      width: 3em;
+      opacity: 0;
+      transition: opacity 0.3s 0s;
+      padding: 5px 0.5em;
+      font-family: Righteous, serif; }
+    .socials .button:hover span {
+      opacity: 1;
+      transition: opacity 0.3s 0.1s; }
+    .socials .button:before {
+      content: '';
+      display: block;
+      border: solid #f30;
+      border-width: 4px 4px 0 0;
+      position: absolute;
+      top: 4px;
+      width: 20px;
+      height: 20px; }
+    .socials .button.arrow {
+      text-align: right;
+      z-index: 2; }
+    .socials .button.arrow:before {
+      left: 0;
+      transform: rotate(45deg);
+      transition: left 0.3s 0.2s; }
+    .socials .button.arrow:hover:before {
+      left: 100%;
+      transition: left 0.3s; }
+    .socials .button:hover {
+      transform: none; }
 
 * {
   padding: 0;

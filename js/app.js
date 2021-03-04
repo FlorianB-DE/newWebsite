@@ -9,6 +9,19 @@ window.onload = function () {
     Array.prototype.forEach.call(document.getElementsByClassName("randomly-colored"), function (element) {
         ColorFunctions.randomColors(element);
     });
+    document.querySelector(".socials > .button").addEventListener("click", (function (evt) {
+        var element = evt.target;
+        var span = element.tagName.toLowerCase() == "span" ? element : element.querySelector("span");
+        var icons = span.parentElement.parentElement.querySelector(".social-icons") || document.querySelector(".social-icons");
+        if (span.style.display == "none") {
+            span.style.display = "block";
+            icons.classList.remove("expanded-icons");
+        }
+        else {
+            span.style.display = "none";
+            icons.classList.add("expanded-icons");
+        }
+    }));
 };
 var ColorFunctions;
 (function (ColorFunctions) {

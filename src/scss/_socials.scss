@@ -1,18 +1,76 @@
-$size: 80px;
-
+@import url('https://fonts.googleapis.com/css?family=Righteous');
 .socials {
+  $box-size: 80px;
+  $text-color: #f30;
+  $background-color: rgba($main-color, 0.5);
   position: fixed;
   right: 0;
-  top: calc(100vh - #{$size * 2});
-  width: $size;
-  height: $size;
-  background: rgba($main-color, 0.25);
+  top: calc(100vh - #{$box-size * 2});
+  width: $box-size;
+  height: $box-size;
+  background: $background-color;
 
   border-bottom-left-radius: 20px;
   border-top-left-radius: 20px;
 
-  span {
+  .button {
+    $size: 20px;
+    $width: 4px;
+    $margin: 45%;
+
+    cursor: pointer;
+    color: $text-color;
+    display: block;
+    align-items: flex-start;
+    text-transform: uppercase;
     position: relative;
-    z-index: 1;
+    transition: transform 0.3s;
+    height: 100% - $margin;
+    margin-top: calc(#{$margin} - #{$size / 2});
+
+    span {
+      display: block;
+      width: 3em;
+      opacity: 0;
+      transition: opacity 0.3s 0s;
+      padding: $size / 4 0.5em;
+      font-family: Righteous, serif;
+    }
+
+    &:hover span {
+      opacity: 1;
+      transition: opacity 0.3s 0.1s;
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      border: solid $text-color;
+      border-width: $width $width 0 0;
+      position: absolute;
+      top: 4px;
+      width: $size;
+      height: $size;
+    }
+
+    &.arrow {
+      text-align: right;
+      z-index: 2;
+    }
+
+    &.arrow:before {
+      left: 0;
+      transform: rotate(45deg);
+      transition: left 0.3s 0.2s;
+    }
+
+    &.arrow:hover:before {
+      left: 100%;
+      transition: left 0.3s;
+    }
+
+    &:hover {
+      transform: none;
+    }
   }
 }
