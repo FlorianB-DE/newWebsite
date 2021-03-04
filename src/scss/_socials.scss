@@ -6,5 +6,13 @@ $size: 80px;
   top: calc(100vh - #{$size * 2});
   width: $size;
   height: $size;
-  background: yellow;
+  background: rgba($main-color, 0.25);
+
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+
+  span {
+    position: relative;
+    z-index: 1;
+  }
 }

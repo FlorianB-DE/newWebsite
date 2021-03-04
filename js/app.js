@@ -9,7 +9,6 @@ window.onload = function () {
     Array.prototype.forEach.call(document.getElementsByClassName("randomly-colored"), function (element) {
         ColorFunctions.randomColors(element);
     });
-    Unity.init();
 };
 var ColorFunctions;
 (function (ColorFunctions) {

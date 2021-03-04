@@ -43,7 +43,8 @@
     background: rgba(255, 255, 255, 0.6);
     border-radius: 8px 50px 50px 8px;
     max-width: 80vw;
-    display: inline-flex; }
+    display: inline-flex;
+    font-family: 'Teko', sans-serif; }
     @media (orientation: landscape) {
       .content .container .title {
         font-size: min(6.5vw, 35vh);
@@ -72,15 +73,19 @@
   top: calc(100vh - 160px);
   width: 80px;
   height: 80px;
-  background: yellow; }
+  background: rgba(255, 255, 255, 0.25);
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px; }
+  .socials span {
+    position: relative;
+    z-index: 1; }
 
 * {
   padding: 0;
   margin: 0; }
 
 html, body {
-  scroll-behavior: smooth;
-  font-family: 'Teko', sans-serif; }
+  scroll-behavior: smooth; }
 
 body {
   overflow: hidden; }
