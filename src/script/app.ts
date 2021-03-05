@@ -4,17 +4,14 @@ window.onload = () => {
     });
 
     document.querySelector(".socials > .button").addEventListener("click", (evt => {
-        const element = evt.target as HTMLElement;
-        const span = element.tagName.toLowerCase() == "span" ? element : element.querySelector("span");
-        const icons = span.parentElement.parentElement.querySelector(".social-icons") || document.querySelector(".social-icons");
-        if (span.style.display == "none") {
-            span.style.display = "block";
-            icons.classList.remove("expanded-icons");
-        }
-        else{
-            span.style.display = "none";
-            icons.classList.add("expanded-icons");
-        }
+        let element = evt.target as HTMLElement;
+        if (element.tagName.toLowerCase() == "span")
+            element = element.parentElement.parentElement;
+        else element = element.parentElement;
+        if (element.classList.contains("expanded-icons"))
+            element.classList.remove("expanded-icons");
+        else
+            element.classList.add("expanded-icons");
     }));
     //Unity.init();
 };

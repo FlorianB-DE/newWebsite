@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Righteous');
+$no_of_icons: 4;
+$right-padding: 40px;
+$box-size: 60px + $right-padding;
+
+$transition-length: 40ms * $no_of_icons;
+
 .socials {
-  $box-size: 80px;
   $text-color: #f30;
   $background-color: rgba($main-color, 0.5);
   position: fixed;
@@ -9,24 +14,26 @@
   width: $box-size;
   height: $box-size;
   background: $background-color;
-
   border-bottom-left-radius: 20px;
   border-top-left-radius: 20px;
 
+  transition: width $transition-length ease-out;
+
   .button {
-    $size: 20px;
+    $size: $right-padding;
     $width: 4px;
-    $margin: 45%;
+    $padding-top: round(($box-size / 2) - ($size / 1.5) + 4px);
 
     cursor: pointer;
     color: $text-color;
     display: block;
     align-items: flex-start;
     text-transform: uppercase;
-    position: relative;
+    position: absolute;
     transition: transform 0.3s;
-    height: 100% - $margin;
-    margin-top: calc(#{$margin} - #{$size / 2});
+    height: round($box-size - (($box-size / 1.75) - $size));
+    padding-top: $padding-top;
+    right: $right-padding;
 
     span {
       display: block;
@@ -35,6 +42,10 @@
       transition: opacity 0.3s 0s;
       padding: $size / 4 0.5em;
       font-family: Righteous, serif;
+    }
+
+    span:before {
+      content: attr(data-text);
     }
 
     &:hover span {
@@ -48,7 +59,7 @@
       border: solid $text-color;
       border-width: $width $width 0 0;
       position: absolute;
-      top: 4px;
+      top: $padding-top;
       width: $size;
       height: $size;
     }
@@ -71,6 +82,52 @@
 
     &:hover {
       transform: none;
+    }
+  }
+
+  .social-icons {
+    position: absolute;
+    right: $box-size;
+    height: $box-size;
+    width: $box-size * $no_of_icons;
+    display: none;
+    @for $i from 1 through $no_of_icons {
+      @debug $i;
+
+      &:nth-child(#{$no_of_icons}n + #{$i}) {
+        visibility: hidden;
+        transition: visibility #{($transition-length + (40ms * $i))} ease-out !important;
+      }
+    }
+    a {
+      margin: auto;
+      img {
+        width: $box-size / 2;
+        height: $box-size / 2;
+      }
+    }
+  }
+}
+
+.expanded-icons {
+  width: $box-size * ($no_of_icons + 1) !important;
+  transition: width $transition-length ease-in;
+  .button {
+    span:before{
+      content: "";
+    }
+    span:after{
+      content: attr(data-alttext);
+    }
+  }
+
+  .social-icons {
+    display: inline-flex;
+    @for $i from 1 through $no_of_icons {
+      &:nth-child(#{$no_of_icons}n + #{$i}) {
+        visibility: visible;
+        transition: all #{($transition-length + (40ms * $i))} ease-in !important;
+      }
     }
   }
 }

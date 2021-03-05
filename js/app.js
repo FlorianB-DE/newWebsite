@@ -11,16 +11,14 @@ window.onload = function () {
     });
     document.querySelector(".socials > .button").addEventListener("click", (function (evt) {
         var element = evt.target;
-        var span = element.tagName.toLowerCase() == "span" ? element : element.querySelector("span");
-        var icons = span.parentElement.parentElement.querySelector(".social-icons") || document.querySelector(".social-icons");
-        if (span.style.display == "none") {
-            span.style.display = "block";
-            icons.classList.remove("expanded-icons");
-        }
-        else {
-            span.style.display = "none";
-            icons.classList.add("expanded-icons");
-        }
+        if (element.tagName.toLowerCase() == "span")
+            element = element.parentElement.parentElement;
+        else
+            element = element.parentElement;
+        if (element.classList.contains("expanded-icons"))
+            element.classList.remove("expanded-icons");
+        else
+            element.classList.add("expanded-icons");
     }));
 };
 var ColorFunctions;

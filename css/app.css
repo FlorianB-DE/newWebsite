@@ -71,29 +71,33 @@
 .socials {
   position: fixed;
   right: 0;
-  top: calc(100vh - 160px);
-  width: 80px;
-  height: 80px;
+  top: calc(100vh - 200px);
+  width: 100px;
+  height: 100px;
   background: rgba(255, 255, 255, 0.5);
   border-bottom-left-radius: 20px;
-  border-top-left-radius: 20px; }
+  border-top-left-radius: 20px;
+  transition: width 160ms ease-out; }
   .socials .button {
     cursor: pointer;
     color: #f30;
     display: block;
     align-items: flex-start;
     text-transform: uppercase;
-    position: relative;
+    position: absolute;
     transition: transform 0.3s;
-    height: 55%;
-    margin-top: calc(45% - 10px); }
+    height: 83px;
+    padding-top: 27px;
+    right: 40px; }
     .socials .button span {
       display: block;
       width: 3em;
       opacity: 0;
       transition: opacity 0.3s 0s;
-      padding: 5px 0.5em;
+      padding: 10px 0.5em;
       font-family: Righteous, serif; }
+    .socials .button span:before {
+      content: attr(data-text); }
     .socials .button:hover span {
       opacity: 1;
       transition: opacity 0.3s 0.1s; }
@@ -103,9 +107,9 @@
       border: solid #f30;
       border-width: 4px 4px 0 0;
       position: absolute;
-      top: 4px;
-      width: 20px;
-      height: 20px; }
+      top: 27px;
+      width: 40px;
+      height: 40px; }
     .socials .button.arrow {
       text-align: right;
       z-index: 2; }
@@ -118,6 +122,51 @@
       transition: left 0.3s; }
     .socials .button:hover {
       transform: none; }
+  .socials .social-icons {
+    position: absolute;
+    right: 100px;
+    height: 100px;
+    width: 400px;
+    display: none; }
+    .socials .social-icons:nth-child(4n + 1) {
+      visibility: hidden;
+      transition: visibility 200ms ease-out !important; }
+    .socials .social-icons:nth-child(4n + 2) {
+      visibility: hidden;
+      transition: visibility 240ms ease-out !important; }
+    .socials .social-icons:nth-child(4n + 3) {
+      visibility: hidden;
+      transition: visibility 280ms ease-out !important; }
+    .socials .social-icons:nth-child(4n + 4) {
+      visibility: hidden;
+      transition: visibility 320ms ease-out !important; }
+    .socials .social-icons a {
+      margin: auto; }
+      .socials .social-icons a img {
+        width: 50px;
+        height: 50px; }
+
+.expanded-icons {
+  width: 500px !important;
+  transition: width 160ms ease-in; }
+  .expanded-icons .button span:before {
+    content: ""; }
+  .expanded-icons .button span:after {
+    content: attr(data-alttext); }
+  .expanded-icons .social-icons {
+    display: inline-flex; }
+    .expanded-icons .social-icons:nth-child(4n + 1) {
+      visibility: visible;
+      transition: all 200ms ease-in !important; }
+    .expanded-icons .social-icons:nth-child(4n + 2) {
+      visibility: visible;
+      transition: all 240ms ease-in !important; }
+    .expanded-icons .social-icons:nth-child(4n + 3) {
+      visibility: visible;
+      transition: all 280ms ease-in !important; }
+    .expanded-icons .social-icons:nth-child(4n + 4) {
+      visibility: visible;
+      transition: all 320ms ease-in !important; }
 
 * {
   padding: 0;
