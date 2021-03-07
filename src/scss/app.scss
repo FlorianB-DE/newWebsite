@@ -1,9 +1,7 @@
-$main-color: white;
-$accent-color: #496AA8;
-
 @import "header";
 @import "content";
 @import "socials";
+@import "scroll-down";
 
 * {
   padding: 0;
@@ -20,5 +18,14 @@ body {
 
 .app {
   padding: 0;
-  width: 100%;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  top: -100vh;
+  transition: top 1s cubic-bezier(0.5, 0.61, 0, 0.97);
+}
+
+#slide-1 {
+  top: 0;
 }

@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Righteous");
+@import url("https://fonts.googleapis.com/css?family=Quicksand:400,700");
+@import url("https://fonts.googleapis.com/css?family=Lato:700");
 .head {
   width: calc(100% + 16px);
   height: 50vh;
@@ -31,7 +33,6 @@
   .content .background {
     position: absolute;
     z-index: -1;
-    background-image: url("../media/landscape_full.jpg");
     background-repeat: repeat-x;
     background-size: cover;
     top: 0;
@@ -80,7 +81,7 @@
   transition: width 160ms ease-out; }
   .socials .button {
     cursor: pointer;
-    color: #f30;
+    color: #ff1000;
     display: block;
     align-items: flex-start;
     text-transform: uppercase;
@@ -104,7 +105,7 @@
     .socials .button:before {
       content: '';
       display: block;
-      border: solid #f30;
+      border: solid #ff1000;
       border-width: 4px 4px 0 0;
       position: absolute;
       top: 27px;
@@ -157,16 +158,91 @@
     display: inline-flex; }
     .expanded-icons .social-icons:nth-child(4n + 1) {
       visibility: visible;
-      transition: all 200ms ease-in !important; }
+      transition: visibility 200ms ease-in !important; }
     .expanded-icons .social-icons:nth-child(4n + 2) {
       visibility: visible;
-      transition: all 240ms ease-in !important; }
+      transition: visibility 240ms ease-in !important; }
     .expanded-icons .social-icons:nth-child(4n + 3) {
       visibility: visible;
-      transition: all 280ms ease-in !important; }
+      transition: visibility 280ms ease-in !important; }
     .expanded-icons .social-icons:nth-child(4n + 4) {
       visibility: visible;
-      transition: all 320ms ease-in !important; }
+      transition: visibility 320ms ease-in !important; }
+
+.app .main-page .arrow {
+  font-family: 'Lato', sans-serif;
+  position: absolute;
+  z-index: 5;
+  top: 90vh;
+  left: 50vw;
+  margin-top: -30px;
+  margin-left: -60px;
+  display: inline-block;
+  font-size: 26px;
+  color: #ff1000;
+  text-align: center;
+  width: 120px;
+  height: 60px;
+  line-height: 60px;
+  border: 5px solid #ff1000;
+  overflow: hidden;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: width 0.5s ease-in-out, margin 0.5s ease-in-out, border-radius 0.25s ease-in-out, color 0.25s ease-in-out; }
+
+.app .main-page .arrow:hover, .app .main-page .arrow.auto {
+  width: 60px;
+  margin-left: -30px;
+  border-radius: 40px;
+  color: rgba(179, 195, 58, 0);
+  transition: width 0.5s ease-in-out, margin 0.5s ease-in-out, border-radius 1s 0.25 ease-in-out, color 0.25s ease-in-out 0.25s; }
+
+.app .main-page .arrow:hover:before, .app .main-page .arrow.auto:before {
+  animation: lineUp 1s cubic-bezier(0, 0.6, 1, 0.4) infinite 0.5s; }
+
+.app .main-page .arrow:hover:after, .app .main-page .arrow.auto:after {
+  animation: tipUp 1s cubic-bezier(0, 0.6, 1, 0.4) infinite 0.5s; }
+
+.app .main-page .arrow:before {
+  position: absolute;
+  display: inline-block;
+  content: "";
+  background: #ff1000;
+  width: 5px;
+  height: 40px;
+  top: 90vh;
+  left: 50vw;
+  margin-top: -8px;
+  margin-left: -3px;
+  transform: translateY(50px); }
+
+.app .main-page .arrow:after {
+  position: absolute;
+  display: inline-block;
+  content: "";
+  width: 20px;
+  height: 20px;
+  color: #ff1000;
+  border-top: 5px solid;
+  border-left: 5px solid;
+  transform: rotateZ(45deg);
+  top: 50%;
+  left: 50%;
+  margin-top: -6px;
+  margin-left: -13px;
+  transform: translateY(50px) rotateZ(45deg); }
+
+@keyframes tipUp {
+  0% {
+    transform: translateY(50px) rotateZ(45deg); }
+  100% {
+    transform: translateY(-70px) rotateZ(45deg); } }
+
+@keyframes lineUp {
+  0% {
+    transform: translateY(50px); }
+  100% {
+    transform: translateY(-70px); } }
 
 * {
   padding: 0;
@@ -180,4 +256,12 @@ body {
 
 .app {
   padding: 0;
-  width: 100%; }
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  top: -100vh;
+  transition: top 1s cubic-bezier(0.5, 0.61, 0, 0.97); }
+
+#slide-1 {
+  top: 0; }

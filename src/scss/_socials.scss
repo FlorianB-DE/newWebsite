@@ -1,4 +1,6 @@
+@import "colors";
 @import url('https://fonts.googleapis.com/css?family=Righteous');
+
 $no_of_icons: 4;
 $right-padding: 40px;
 $box-size: 60px + $right-padding;
@@ -6,7 +8,6 @@ $box-size: 60px + $right-padding;
 $transition-length: 40ms * $no_of_icons;
 
 .socials {
-  $text-color: #f30;
   $background-color: rgba($main-color, 0.5);
   position: fixed;
   right: 0;
@@ -25,7 +26,7 @@ $transition-length: 40ms * $no_of_icons;
     $padding-top: round(($box-size / 2) - ($size / 1.5) + 4px);
 
     cursor: pointer;
-    color: $text-color;
+    color: $button-color;
     display: block;
     align-items: flex-start;
     text-transform: uppercase;
@@ -56,7 +57,7 @@ $transition-length: 40ms * $no_of_icons;
     &:before {
       content: '';
       display: block;
-      border: solid $text-color;
+      border: solid $button-color;
       border-width: $width $width 0 0;
       position: absolute;
       top: $padding-top;
@@ -126,7 +127,7 @@ $transition-length: 40ms * $no_of_icons;
     @for $i from 1 through $no_of_icons {
       &:nth-child(#{$no_of_icons}n + #{$i}) {
         visibility: visible;
-        transition: all #{($transition-length + (40ms * $i))} ease-in !important;
+        transition: visibility #{($transition-length + (40ms * $i))} ease-in !important;
       }
     }
   }
